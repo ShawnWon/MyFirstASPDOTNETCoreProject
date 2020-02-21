@@ -1,0 +1,63 @@
+﻿@model EONtestEF.Models.Users
+@{
+    ViewBag.Title = "AddUserForm";
+}
+
+<h2>AddUserForm</h2>
+
+@using (Html.BeginForm("SubmitNewUser", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>@Html.LabelFor(x => x.Name):</td>
+            <td>@Html.TextBoxFor(x => x.Name, new { id = "username" })</td>  @*The name of this textbox is "UserName", the attribute of model user.*@
+            <td>@Html.ValidationMessageFor(x => x.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Email):</td>
+            <td>@Html.TextBoxFor(x => x.Email)</td>
+            <td>@Html.ValidationMessageFor(x => x.Email)</td>
+
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(x => x.Gender):</td>
+            <td>@Html.TextBoxFor(x => x.Gender)</td>
+            <td>@Html.ValidationMessageFor(x => x.Gender)</td>
+
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.regDate):</td>
+            <td>@Html.TextBoxFor(x => x.regDate, "{0:dd-MM-yyyy}", new { @class = "dateInput", @placeholder = "plz input date", min = "01-01-2019", max = "06-30-2019" })</td>
+            <td>@Html.ValidationMessageFor(x => x.regDate)</td>
+
+        </tr>
+
+        <tr>
+            <td>Selected days:</td>
+            <td>
+                @Html.CheckBoxFor(x => x.Days1) @Html.LabelFor(x => x.Days1)
+                @Html.CheckBoxFor(x => x.Days2) @Html.LabelFor(x => x.Days2)
+                @Html.CheckBoxFor(x => x.Days3) @Html.LabelFor(x => x.Days3)
+            </td>
+
+
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(x => x.AddReq):</td>
+            <td>@Html.TextBoxFor(x => x.AddReq)</td>
+            <td>@Html.ValidationMessageFor(x => x.AddReq)</td>
+
+        </tr>
+
+
+        <tr>
+            <td colspan="2" align="right"><input id="submitBtn" type="submit" value="Submit" style="color:midnightblue" /></td>
+        </tr>
+
+
+    </table>
+}
+
+
