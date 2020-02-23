@@ -22,7 +22,7 @@
 
         <tr>
             <td>@Html.LabelFor(x => x.Gender):</td>
-            <td>@Html.TextBoxFor(x => x.Gender)</td>
+            <td>@Html.RadioButtonFor(x => x.Gender, "Male") Male @Html.RadioButtonFor(x => x.Gender, "Female") Female</td>
             <td>@Html.ValidationMessageFor(x => x.Gender)</td>
 
         </tr>

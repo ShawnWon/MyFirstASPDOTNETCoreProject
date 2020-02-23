@@ -38,19 +38,17 @@ namespace EONtestEF.Controllers
 
         public ActionResult SubmitNewUser(IFormCollection form)
         {
+            
+
             string name = form["Name"];
             string email = form["Email"];
             string regDate = form["regDate"];
             string addreq = form["AddReq"];
             string gender = form["Gender"];
 
-            string days1 = form["Days1"];
-            string days2 = form["Days2"];
-            string days3 = form["Days3"];
-
-            bool day1check = true; //Need to convert above string into bool value here
-            bool day2check = false;
-            bool day3check = true;
+            bool day1check = form["Days1"].ToString().Substring(0,4).Equals("true",StringComparison.CurrentCultureIgnoreCase); 
+            bool day2check = form["Days2"].ToString().Substring(0, 4).Equals("true", StringComparison.CurrentCultureIgnoreCase);
+            bool day3check = form["Days3"].ToString().Substring(0, 4).Equals("true", StringComparison.CurrentCultureIgnoreCase);
 
             List<Users> list = UserData.GetAllUsers() ;
             if (list.Where(x => x.Name.Equals(name)).Any()) return RedirectToAction("AddUserForm", "Home");
