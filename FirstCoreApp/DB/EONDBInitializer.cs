@@ -19,9 +19,9 @@ namespace FirstCoreApp.DB
             }
 
 
-            Users user1 = new Users("Italo Calvino", "pet@gmail.com", "M", DateTime.Today.ToString("yyyy-MM-dd"), true, false, true, "To provide rooms");
-            Users user2 = new Users("Milan Kundera", "pet@gmail.com", "M", DateTime.Today.ToString("yyyy-MM-dd"), true, false, true, "To provide rooms");
-            Users user3 = new Users("Garcia Marquez", "pet@gmail.com", "M", DateTime.Today.ToString("yyyy-MM-dd"), true, false, true, "To provide rooms");
+            Users user1 = new Users("Italo Calvino", "pet@gmail.com", "Male", DateTime.Today, true, false, true, "To provide rooms");
+            Users user2 = new Users("Milan Kundera", "pet@gmail.com", "Male", DateTime.Today, true, false, true, "To provide rooms");
+            Users user3 = new Users("Garcia Marquez", "pet@gmail.com", "Male", DateTime.Today, true, false, true, "To provide rooms");
 
                 
 

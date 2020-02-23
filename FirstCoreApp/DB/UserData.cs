@@ -26,7 +26,7 @@ namespace EONtestEF.DB
             return list;
         }
 
-        internal static void CreateNewUser(string name, string email, string gender, string regDate, bool days1, bool days2, bool days3, string addreq)
+        internal static void CreateNewUser(string name, string email, string gender, DateTime regDate, bool days1, bool days2, bool days3, string addreq)
         {
             Users user = new Users();
 
@@ -35,7 +35,7 @@ namespace EONtestEF.DB
             user.Name = name;
             user.Email = email;
             user.Gender = gender;
-            user.regDate = regDate;
+            user.RegDate = regDate;
             user.Days1 = days1;
             user.Days2 = days2;
             user.Days3 = days3;

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using FirstCoreApp.Validator;
 
 namespace EONtestEF.Models
 {
@@ -27,7 +28,9 @@ namespace EONtestEF.Models
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "Registered date is required")]
-        public string regDate { get; set; }
+        [DataType(DataType.Date)]
+        [Range(typeof(DateTime),"02/25/2020","02/27/2020")]
+        public DateTime RegDate { get; set; }
 
         public bool Days1 { get; set; }
         public bool Days2 { get; set; }
@@ -42,12 +45,12 @@ namespace EONtestEF.Models
 
         }
 
-        public Users(string Name, string Email, string Gender, string datetime, bool days1, bool days2, bool days3, string addreq)
+        public Users(string Name, string Email, string Gender, DateTime datetime, bool days1, bool days2, bool days3, string addreq)
         {
             this.Name = Name;
             this.Email = Email;
             this.Gender = Gender;
-            this.regDate = datetime;
+            this.RegDate = datetime;
             this.Days1 = days1;
             this.Days2 = days2;
             this.Days3 = days3;

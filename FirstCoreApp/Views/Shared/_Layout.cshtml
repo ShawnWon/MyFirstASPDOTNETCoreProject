@@ -50,7 +50,18 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
-
+    <script>
+        $.validator.methods.range = function (value, element, param) {
+            
+            
+                var min = $(element).attr('data-val-range-min');
+                var max = $(element).attr('data-val-range-max');
+                var date = new Date(value).getDate();
+                var minDate = new Date(min).getDate();
+                var maxDate = new Date(max).getDate();
+                return this.optional(element) || (date >= minDate && date <= maxDate);
+          };
+        </script>
 
 </body>
 </html>

@@ -27,9 +27,9 @@
 
         </tr>
         <tr>
-            <td>@Html.LabelFor(x => x.regDate):</td>
-            <td>@Html.TextBoxFor(x => x.regDate, "{0:dd-MM-yyyy}", new { @class = "dateInput", @placeholder = "plz input date", min = "01-01-2019", max = "06-30-2019" })</td>
-            <td>@Html.ValidationMessageFor(x => x.regDate)</td>
+            <td>@Html.LabelFor(x => x.RegDate):</td>
+            <td>@Html.EditorFor(x => x.RegDate, new {@type="date", @Value= DateTime.Today.Date, htmlAttributes = new {@onchange="checkDate()"} })</td>
+            <td>@Html.ValidationMessageFor(x => x.RegDate)</td>
 
         </tr>
 
@@ -61,3 +61,31 @@
 }
 
 
+<script>
+    function checkDate() {
+
+        Date.prototype.addDays = function (days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;}
+        
+                var dateString = document.getElementById('RegDate').value;
+                var RegDate = new Date(dateString);
+                
+                var todaysDate = new Date();
+                
+                var deadline = todaysDate.addDays(30);
+
+        
+                if (RegDate > deadline) {
+                    alert("Reg date out of range.");
+                    return false;
+                }
+                
+                if (RegDate.setHours(0, 0, 0, 0) < todaysDate.setHours(0, 0, 0, 0)) {
+                    alert("Reg date cannot in past.");
+                    return false;
+                }
+                return true;
+            }
+</script>

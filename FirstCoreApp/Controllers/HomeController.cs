@@ -29,7 +29,6 @@ namespace EONtestEF.Controllers
 
         public ActionResult AddUserForm()
         {
-            Users user = new Users();
 
 
             return View();
@@ -42,7 +41,7 @@ namespace EONtestEF.Controllers
 
             string name = form["Name"];
             string email = form["Email"];
-            string regDate = form["regDate"];
+            DateTime regDate = Convert.ToDateTime(form["regDate"]);
             string addreq = form["AddReq"];
             string gender = form["Gender"];
 
