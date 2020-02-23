@@ -8,23 +8,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using FirstCoreApp.DB;
 
 
 namespace EONtestEF.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly EONDbContext _context;
 
-        public HomeController(EONDbContext context)
-        {
-            _context = context;
-        }
-
+        
 
         public ActionResult Index()
         {
-            List<Users> listusers = _context.users.ToList();
+            
+
+            List<Users> listusers = UserData.GetAllUsers();
             ViewBag.listuser = listusers;
             return View();
         }
@@ -54,12 +52,10 @@ namespace EONtestEF.Controllers
             bool day2check = false;
             bool day3check = true;
 
-            List<Users> list = _context.users.ToList();
+            List<Users> list = UserData.GetAllUsers() ;
             if (list.Where(x => x.Name.Equals(name)).Any()) return RedirectToAction("AddUserForm", "Home");
 
-
-            _context.Add(new Users(name, email, gender, regDate, day1check, day2check, day3check, addreq));
-            _context.SaveChanges();
+            UserData.CreateNewUser(name,email,gender,regDate,day1check,day2check,day3check,addreq);
 
             return RedirectToAction("Index", "Home");
         }

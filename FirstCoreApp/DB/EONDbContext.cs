@@ -13,6 +13,8 @@ namespace EONtestEF.DB
         public EONDbContext(DbContextOptions<EONDbContext> options) : base(options)
         { }
 
+        public EONDbContext() { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-MBSGJ0P; Database=EONtestCore;Trusted_Connection=True;");

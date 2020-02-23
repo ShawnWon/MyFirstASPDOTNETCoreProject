@@ -26,9 +26,9 @@ namespace FirstCoreApp.DB
                 
 
             context.users.Add(user1);
-            context.SaveChanges();
+            
             context.users.Add(user2);
-            context.SaveChanges();
+            
             context.users.Add(user3);
 
             context.SaveChanges();
