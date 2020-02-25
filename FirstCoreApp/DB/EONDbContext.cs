@@ -1,4 +1,4 @@
-﻿using EONtestEF.Models;
+﻿using FirstCoreApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace EONtestEF.DB
+namespace FirstCoreApp.DB
 {
     public class EONDbContext : DbContext
     {
@@ -26,6 +26,7 @@ namespace EONtestEF.DB
         
         }
         public DbSet<Users> users { get; set; }
+        public DbSet<CheckboxModel> boxes { get; set; }
 
     }
 }

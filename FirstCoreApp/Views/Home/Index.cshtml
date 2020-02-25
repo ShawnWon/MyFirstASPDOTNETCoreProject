@@ -1,4 +1,4 @@
-﻿@using EONtestEF.Models;
+﻿@using FirstCoreApp.Models;
 
 @{
     ViewBag.Title = "Home Page";
@@ -19,12 +19,11 @@
                 <td>@user.Gender</td>
                 <td>@user.RegDate.ToString("yyyy-MM-dd")</td>
                 <td>
-                    @{ if (user.Days1)
-                        { <text>Day 1  </text>}
-                        if (user.Days2)
-                        { <text>Day 2  </text>}
-                        if (user.Days3)
-                        { <text>Day 3</text>}
+                    @{foreach (CheckboxModel cbm in user.boxes)
+                        {
+                            if (cbm.IsChecked)
+                            { <text>@cbm.Text  </text>}
+                                                     }
                       }
 
 </td>

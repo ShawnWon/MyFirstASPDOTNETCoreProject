@@ -1,10 +1,12 @@
-﻿using EONtestEF.Models;
+﻿using FirstCoreApp.DB;
+using FirstCoreApp.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace EONtestEF.DB
+namespace FirstCoreApp.DB
 {
     public class UserData
     {
@@ -19,14 +21,14 @@ namespace EONtestEF.DB
             using (var _context = new EONDbContext())
             {
                 if (_context.users.Any())
-                    list = _context.users.ToList();
+                    list = _context.users.Include("boxes").ToList();
             }
 
 
             return list;
         }
 
-        internal static void CreateNewUser(string name, string email, string gender, DateTime regDate, bool days1, bool days2, bool days3, string addreq)
+        internal static void CreateNewUser(string name, string email, string gender, DateTime regDate, List<CheckboxModel> list,string addreq)
         {
             Users user = new Users();
 
@@ -36,9 +38,7 @@ namespace EONtestEF.DB
             user.Email = email;
             user.Gender = gender;
             user.RegDate = regDate;
-            user.Days1 = days1;
-            user.Days2 = days2;
-            user.Days3 = days3;
+            user.boxes = list;
 
             user.AddReq = addreq;
 

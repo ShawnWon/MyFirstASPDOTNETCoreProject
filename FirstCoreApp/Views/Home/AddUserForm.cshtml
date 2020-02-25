@@ -1,4 +1,4 @@
-﻿@model EONtestEF.Models.Users
+﻿@model FirstCoreApp.Models.Users
 @{
     ViewBag.Title = "AddUserForm";
 }
@@ -33,15 +33,25 @@
 
         </tr>
 
+
         <tr>
-            <td>Selected days:</td>
+
+            <td>@Html.LabelFor(x => x.boxes):</td>
             <td>
-                @Html.CheckBoxFor(x => x.Days1) @Html.LabelFor(x => x.Days1)
-                @Html.CheckBoxFor(x => x.Days2) @Html.LabelFor(x => x.Days2)
-                @Html.CheckBoxFor(x => x.Days3) @Html.LabelFor(x => x.Days3)
-            </td>
+                @for (int i=0; i<Model.boxes.Count;i++)
+                {
+                    @Html.CheckBoxFor(m => Model.boxes[i].IsChecked)
+                    @Html.HiddenFor(m=>Model.boxes[i].Text)
+                    @Html.HiddenFor(m=>Model.boxes[i].Id)
+                    @Model.boxes[i].Text
 
+                    
+                   
+                }
+                    </td>
+            <td>@Html.ValidationMessageFor(x => x.boxes)</td>
 
+            
         </tr>
 
         <tr>
@@ -61,7 +71,10 @@
 }
 
 
-<script>
+
+
+<!--
+    <script>
     function checkDate() {
 
         Date.prototype.addDays = function (days) {
@@ -89,3 +102,4 @@
                 return true;
             }
 </script>
+    -->
