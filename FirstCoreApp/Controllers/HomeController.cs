@@ -45,26 +45,27 @@ namespace FirstCoreApp.Controllers
         [HttpPost]
         public ActionResult SubmitNewUser(Users user)
         {
-
-
-            /*string name = form["Name"];
-            string email = form["Email"];
-            DateTime regDate = Convert.ToDateTime(form["regDate"]);
-            string addreq = form["AddReq"];
-            string gender = form["Gender"];
-
-            string day1check = form["boxes"]; */
-
-
-            bool x = user.boxes.FirstOrDefault().IsChecked;
-
-
-            List<Users> list = UserData.GetAllUsers() ;
-            if (list.Where(x => x.Name.Equals(user.Name)).Any()||list.Where(x=>x.Email.Equals(user.Email)).Any()) return RedirectToAction("AddUserForm", "Home");
-
             UserData.CreateNewUser(user.Name,user.Email,user.Gender,user.RegDate, user.boxes,user.AddReq);
 
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult IsNewUser(string name)
+        {
+            List<Users> list = UserData.GetAllUsers();
+
+            if (list.Where(x => x.Name.Equals(name)).Any()) return Json(false);
+            return Json(true);
+        }
+
+        public ActionResult IsNewEmail(string email)
+        {
+            List<Users> list = UserData.GetAllUsers();
+
+            if (list.Where(x => x.Email.Equals(email)).Any()) return Json(false);
+            return Json(true);
+        }
+
+
     }
 }

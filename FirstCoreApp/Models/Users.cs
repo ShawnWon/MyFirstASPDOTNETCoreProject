@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using FirstCoreApp.Models;
 using FirstCoreApp.Validator;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FirstCoreApp.Models
 {
@@ -15,10 +16,13 @@ namespace FirstCoreApp.Models
         
         public int ID { get; set; }
 
+        [Remote("IsNewUser","Home",HttpMethod ="POST",ErrorMessage ="User name already registered.")]
         [Required(ErrorMessage = "User Name is required")]
         [MaxLength(30)]
         public string Name { get; set; }
 
+
+        [Remote("IsNewEmail","Home",HttpMethod ="POST",ErrorMessage ="Email already registered.")]
         [EmailAddress]
         [MaxLength(50)]
         [Display(Name = "Email Address")]
@@ -35,9 +39,9 @@ namespace FirstCoreApp.Models
 
         
 
-        [Required(ErrorMessage ="Please select at least one day.")]
         public List<CheckboxModel> boxes { get; set; }
 
+        public ICollection<CheckboxModel> selectedDays { get; set; }
 
         [MaxLength(100)]
         public string AddReq { get; set; }

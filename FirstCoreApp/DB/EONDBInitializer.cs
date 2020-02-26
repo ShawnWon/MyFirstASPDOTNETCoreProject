@@ -35,15 +35,15 @@ namespace FirstCoreApp.DB
                 context.boxes.Add(cm);
 
 
-            user1.boxes = list;
+            user1.selectedDays = list;
             context.users.Add(user1);
             context.SaveChanges();
 
-            user2.boxes = new List<CheckboxModel>() { new CheckboxModel("Day1", false), new CheckboxModel("Day2", true), new CheckboxModel("Day3", false)};
+            user2.selectedDays = new List<CheckboxModel>() { new CheckboxModel("Day1", false), new CheckboxModel("Day2", true), new CheckboxModel("Day3", false)};
             context.users.Add(user2);
             context.SaveChanges();
 
-            user3.boxes = new List<CheckboxModel>() { new CheckboxModel("Day1", true), new CheckboxModel("Day2", false), new CheckboxModel("Day3", false) };
+            user3.selectedDays = new List<CheckboxModel>() { new CheckboxModel("Day1", true), new CheckboxModel("Day2", false), new CheckboxModel("Day3", false) };
             context.users.Add(user3);
 
             context.SaveChanges();

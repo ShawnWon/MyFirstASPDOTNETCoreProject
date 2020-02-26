@@ -28,7 +28,7 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(x => x.RegDate):</td>
-            <td>@Html.EditorFor(x => x.RegDate, new {@type="date", @Value= DateTime.Today.Date, htmlAttributes = new {@onchange="checkDate()"} })</td>
+            <td>@Html.EditorFor(x => x.RegDate, new { @type = "date", @Value = DateTime.Today.Date, htmlAttributes = new { @onchange = "checkDate()" } })</td>
             <td>@Html.ValidationMessageFor(x => x.RegDate)</td>
 
         </tr>
@@ -38,20 +38,26 @@
 
             <td>@Html.LabelFor(x => x.boxes):</td>
             <td>
-                @for (int i=0; i<Model.boxes.Count;i++)
+                @for (int i = 0; i < Model.boxes.Count; i++)
                 {
-                    @Html.CheckBoxFor(m => Model.boxes[i].IsChecked)
-                    @Html.HiddenFor(m=>Model.boxes[i].Text)
-                    @Html.HiddenFor(m=>Model.boxes[i].Id)
+                    @Html.CheckBoxFor(m => Model.boxes[i].IsChecked, new { @class = "checkboxcls"})
                     @Model.boxes[i].Text
+                    @Html.HiddenFor(m => Model.boxes[i].Text)
+                    @Html.HiddenFor(m => Model.boxes[i].Id)
 
-                    
-                   
+
+
+
+
                 }
-                    </td>
-            <td>@Html.ValidationMessageFor(x => x.boxes)</td>
+            </td>
+            <td>
+                <span id="Checkbox-error" class="field-validation-error">
+                    <span>Select at least one day.</span>
+                </span>
+            </td>
 
-            
+
         </tr>
 
         <tr>
@@ -81,20 +87,20 @@
             var date = new Date(this.valueOf());
             date.setDate(date.getDate() + days);
             return date;}
-        
+
                 var dateString = document.getElementById('RegDate').value;
                 var RegDate = new Date(dateString);
-                
+
                 var todaysDate = new Date();
-                
+
                 var deadline = todaysDate.addDays(30);
 
-        
+
                 if (RegDate > deadline) {
                     alert("Reg date out of range.");
                     return false;
                 }
-                
+
                 if (RegDate.setHours(0, 0, 0, 0) < todaysDate.setHours(0, 0, 0, 0)) {
                     alert("Reg date cannot in past.");
                     return false;
@@ -103,3 +109,34 @@
             }
 </script>
     -->
+
+@section Scripts {
+   
+    <script type="text/javascript">
+        var declarationsError = $('#Checkbox-error');
+        $('form').submit(function () {
+
+            
+
+            if ($(".checkboxcls:checkbox:checked").length > 0) {
+                declarationsError.hide();
+                return true;
+            } else {
+                declarationsError.show();
+                return false;
+            }
+        });
+
+        $('.checkboxcls').change(function () {
+            
+
+            if ($(this).is(':checked')) {
+                declarationsError.hide(); // hide error message
+            }
+
+            if ($(".checkboxcls:checkbox:checked").length = 0) {
+                declarationsError.show();
+            }
+        });
+    </script>
+}

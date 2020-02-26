@@ -19,7 +19,7 @@
                 <td>@user.Gender</td>
                 <td>@user.RegDate.ToString("yyyy-MM-dd")</td>
                 <td>
-                    @{foreach (CheckboxModel cbm in user.boxes)
+                    @{foreach (CheckboxModel cbm in user.selectedDays)
                         {
                             if (cbm.IsChecked)
                             { <text>@cbm.Text  </text>}
