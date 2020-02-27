@@ -25,7 +25,7 @@ namespace FirstCoreApp.Models
         [Remote("IsNewEmail","Home",HttpMethod ="POST",ErrorMessage ="Email already registered.")]
         [EmailAddress]
         [MaxLength(50)]
-        [Display(Name = "Email Address")]
+        [Display(Name = "Email")]
         [Required(ErrorMessage = "Email address is required")]
         public string Email { get; set; }
 

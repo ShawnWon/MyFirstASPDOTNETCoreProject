@@ -19,9 +19,9 @@ namespace FirstCoreApp.DB
             }
 
 
-            Users user1 = new Users("Italo Calvino", "pet@gmail.com", "Male", DateTime.Today, "To provide rooms");
-            Users user2 = new Users("Milan Kundera", "pet@gmail.com", "Male", DateTime.Today, "To provide rooms");
-            Users user3 = new Users("Garcia Marquez", "pet@gmail.com", "Male", DateTime.Today, "To provide rooms");
+            Users user1 = new Users("Italo Calvino", "italocalvino@gmail.com", "Male", DateTime.Today, "To provide rooms");
+            Users user2 = new Users("Milan Kundera", "milankundera@gmail.com", "Male", DateTime.Today.AddDays(-1), "To provide beer");
+            Users user3 = new Users("Garcia Marquez", "garciamarquez@gmail.com", "Male", DateTime.Today.AddDays(-2), "To provide chocolate");
 
             CheckboxModel c1 = new CheckboxModel("Day1",true);
             CheckboxModel c2 = new CheckboxModel("Day2", false);

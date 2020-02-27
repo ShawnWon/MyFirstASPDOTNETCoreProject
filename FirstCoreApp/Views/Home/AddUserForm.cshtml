@@ -4,24 +4,27 @@
 }
 
 <style>
-    input[type="date"] {
-  
-  outline: none;
-        }
+   
 
     .text-danger{
         color:red;
     }
 
+    .boldlabel {
+    
+        font:caption;
+        font-size:large;
+    }
 
 </style>
   
 
+<div class="w3-bar w3-white w3-large">
+    </div>
 
-
-<header class="w3-display-container w3-content" style="max-width:1500px;">
-    <img class="w3-image" src="~/lib/Images/bg.jpg" style="min-width:1000px" width="1500" height="800" >
-    <div class="w3-display-left w3-padding w3-col l8 m8">
+<div class="w3-display-container w3-content" style="max-width:1500px;" >
+    <img class="w3-image" src="~/lib/Images/bg.jpg" style="min-width:1000px"  >
+    <div class="w3-display-left w3-padding w3-col l6 m8">
         <div class="w3-container w3-blue">
             <h4><i class="fa fa-bed w3-margin-right"></i>AddUserForm</h4>
         </div>
@@ -30,79 +33,112 @@
 
             @using (Html.BeginForm("SubmitNewUser", "Home", FormMethod.Post))
             {
-                <table class="w3-table">
-                    <tr>
-                        <td>@Html.LabelFor(x => x.Name):</td>
-                        <td>@Html.TextBoxFor(x => x.Name, new { @class="w3-input"})</td> 
-                        <td>@Html.ValidationMessageFor(x => x.Name,"", new { @class = "text-danger" })</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(x => x.Email):</td>
-                        <td>@Html.TextBoxFor(x => x.Email, new { @class="w3-input"})</td>
-                        <td>@Html.ValidationMessageFor(x => x.Email,"", new { @class = "text-danger" })</td>
 
-                    </tr>
-
-                    <tr>
-                        <td>@Html.LabelFor(x => x.Gender):</td>
-                        <td>@Html.RadioButtonFor(x => x.Gender, "Male",new { @class = "w3-radio" }) Male @Html.RadioButtonFor(x => x.Gender, "Female",new { @class = "w3-radio" }) Female</td>
-                        <td>@Html.ValidationMessageFor(x => x.Gender,"", new { @class = "text-danger" })</td>
-
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(x => x.RegDate):</td>
-                        <td>@Html.EditorFor(x => x.RegDate, new { @type = "date", @Value = DateTime.Today.Date, htmlAttributes = new { @onchange = "checkDate()" ,@class = "w3-input"} })</td>
-                        <td>@Html.ValidationMessageFor(x => x.RegDate,"", new { @class = "text-danger" })</td>
-
-                    </tr>
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-col col-md-3">
+                    
+                    <i class="fa fa-user-o"></i>@Html.LabelFor(x => x.Name, new { @class = "boldlabel"})
+                    </div>
+                    <div class="w3-col col-md-6">
+                    @Html.TextBoxFor(x => x.Name, new { @class="w3-input"})
+                </div>
+                <div class="w3-col col-md-3">
+                    @Html.ValidationMessageFor(x => x.Name,"", new { @class = "text-danger" })
+                </div>
+            </div>
 
 
-                    <tr>
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-col col-md-3">
 
-                        <td>Select Days:</td>
-                        <td>
-                            @for (int i = 0; i < Model.boxes.Count; i++)
+                    <i class="fa fa-envelope"></i>@Html.LabelFor(x => x.Email, new { @class = "boldlabel"})</div>
+                <div class="w3-col col-md-6">
+                    @Html.TextBoxFor(x => x.Email, new { @class="w3-input"})
+                </div>
+                <div class="w3-col col-md-3">
+                    @Html.ValidationMessageFor(x => x.Email,"", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-col col-md-3">
+
+                    <i class="fa fa-transgender"></i>@Html.LabelFor(x => x.Gender, new { @class = "boldlabel"})</div>
+                <div class="w3-col col-md-6">
+                    @Html.RadioButtonFor(x => x.Gender, "Male",new { @class = "w3-radio" }) Male @Html.RadioButtonFor(x => x.Gender, "Female",new { @class = "w3-radio" }) Female
+                </div>
+                <div class="w3-col col-md-3">
+                    @Html.ValidationMessageFor(x => x.Gender,"", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-col col-md-3">
+
+                    <i class="fa fa-calendar-o"></i>@Html.LabelFor(x => x.RegDate, new { @class = "boldlabel"})</div>
+                <div class="w3-col col-md-6">
+                    @Html.EditorFor(x => x.RegDate, new { @type = "date", @Value = DateTime.Today.Date, htmlAttributes = new { @onchange = "checkDate()" ,@class = "w3-input"} })
+                </div>
+                <div class="w3-col col-md-3">
+                    @Html.ValidationMessageFor(x => x.RegDate,"", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-col col-md-3">
+
+                    <i class="fa fa-bank"></i><span class="boldlabel">Days</span></div>
+                <div class="w3-col col-md-6">
+                    @for (int i = 0; i < Model.boxes.Count; i++)
                             {
-                                @Html.CheckBoxFor(m => Model.boxes[i].IsChecked, new { @class = "w3-check" })
-                                @Model.boxes[i].Text
-                                @Html.HiddenFor(m => Model.boxes[i].Text)
-                                @Html.HiddenFor(m => Model.boxes[i].Id)
+                    @Html.CheckBoxFor(m => Model.boxes[i].IsChecked, new { @class = "w3-check" })
+                    @Model.boxes[i].Text
+                    @Html.HiddenFor(m => Model.boxes[i].Text)
+                    @Html.HiddenFor(m => Model.boxes[i].Id)
 
 
 
 
 
                             }
-                        </td>
-                        <td>
-                            <span id="Checkbox-error" class="text-danger">
-                                <span>Select at least one day.</span>
-                            </span>
-                        </td>
+                </div>
+                <div class="w3-col col-md-3">
+                    <span id="Checkbox-error" class="text-danger">
+                        <span>Select at least one day.</span>
+                    </span>
+                </div>
+            </div>
 
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-col col-md-3">
 
-                    </tr>
+                    <i class="fa fa-bars"></i>@Html.LabelFor(x => x.AddReq, new { @class = "boldlabel"})</div>
+ 
+                <div class="w3-col col-md-6">
+                @Html.TextBoxFor(x => x.AddReq, new { @class="w3-input"})</div>
+                
+                <div class="w3-col col-md-3">
+                    @Html.ValidationMessageFor(x => x.AddReq,"", new { @class = "text-danger" })
+                </div>
+            </div>
 
-                    <tr>
-                        <td>@Html.LabelFor(x => x.AddReq):</td>
-                        <td>@Html.TextBoxFor(x => x.AddReq, new { @class="w3-input"})</td>
-                        <td>@Html.ValidationMessageFor(x => x.AddReq,"", new { @class = "text-danger" })</td>
+            <div class="w3-row-padding" style="margin:0 -16px;">
+                <div class="w3-col col-md-3 w3-center">
 
-                    </tr>
+                </div>
+                <div class="w3-col col-md-6 w3-center">
+                    <input id="submitBtn" type="submit" value="Submit" class="w3-btn" />
+                </div>
+                <div class="w3-col col-md-3 w3-center">
+                    </div>
+            </div>
 
-
-                    <tr>
-                        <td colspan="2" align="right"><input id="submitBtn" type="submit" value="Submit" class="w3-btn" /></td>
-                    </tr>
-
-
-                </table>
             }
 
 
         </div>
     </div>
-</header>
+</div>
 
 
 
