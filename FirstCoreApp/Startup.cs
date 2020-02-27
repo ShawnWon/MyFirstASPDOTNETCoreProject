@@ -29,7 +29,15 @@ namespace FirstCoreApp
             services.AddControllersWithViews();
 
             services.AddDbContext<EONDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionProd")));
+                
+            /*if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+                services.AddDbContext<EONDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionProd")));
+            else
+                services.AddDbContext<EONDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.BuildServiceProvider().GetService<EONDbContext>().Database.Migrate();     */   
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

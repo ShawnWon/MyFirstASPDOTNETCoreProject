@@ -34,7 +34,7 @@ namespace FirstCoreApp.Models
 
         [Required(ErrorMessage = "Registered date is required")]
         [DataType(DataType.Date)]
-        [Range(typeof(DateTime),"02/25/2020","02/27/2020", ErrorMessage ="{0} must between {1} and {2}")]
+        [Range(typeof(DateTime),"02/25/2020","02/27/2020", ErrorMessage ="{0} must between 02/25/2020 and 02/27/2020")]
         public DateTime RegDate { get; set; }
 
         

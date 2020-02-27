@@ -3,78 +3,107 @@
     ViewBag.Title = "AddUserForm";
 }
 
-<h2>AddUserForm</h2>
+<style>
+    input[type="date"] {
+  
+  outline: none;
+        }
 
-@using (Html.BeginForm("SubmitNewUser", "Home", FormMethod.Post))
-{
-    <table>
-        <tr>
-            <td>@Html.LabelFor(x => x.Name):</td>
-            <td>@Html.TextBoxFor(x => x.Name, new { id = "username" })</td>  @*The name of this textbox is "UserName", the attribute of model user.*@
-            <td>@Html.ValidationMessageFor(x => x.Name)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(x => x.Email):</td>
-            <td>@Html.TextBoxFor(x => x.Email)</td>
-            <td>@Html.ValidationMessageFor(x => x.Email)</td>
-
-        </tr>
-
-        <tr>
-            <td>@Html.LabelFor(x => x.Gender):</td>
-            <td>@Html.RadioButtonFor(x => x.Gender, "Male") Male @Html.RadioButtonFor(x => x.Gender, "Female") Female</td>
-            <td>@Html.ValidationMessageFor(x => x.Gender)</td>
-
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(x => x.RegDate):</td>
-            <td>@Html.EditorFor(x => x.RegDate, new { @type = "date", @Value = DateTime.Today.Date, htmlAttributes = new { @onchange = "checkDate()" } })</td>
-            <td>@Html.ValidationMessageFor(x => x.RegDate)</td>
-
-        </tr>
+    .text-danger{
+        color:red;
+    }
 
 
-        <tr>
-
-            <td>@Html.LabelFor(x => x.boxes):</td>
-            <td>
-                @for (int i = 0; i < Model.boxes.Count; i++)
-                {
-                    @Html.CheckBoxFor(m => Model.boxes[i].IsChecked, new { @class = "checkboxcls"})
-                    @Model.boxes[i].Text
-                    @Html.HiddenFor(m => Model.boxes[i].Text)
-                    @Html.HiddenFor(m => Model.boxes[i].Id)
+</style>
+  
 
 
 
+<header class="w3-display-container w3-content" style="max-width:1500px;">
+    <img class="w3-image" src="~/lib/Images/bg.jpg" style="min-width:1000px" width="1500" height="800" >
+    <div class="w3-display-left w3-padding w3-col l8 m8">
+        <div class="w3-container w3-blue">
+            <h4><i class="fa fa-bed w3-margin-right"></i>AddUserForm</h4>
+        </div>
+        <div class="w3-container w3-white w3-padding-16">
 
 
-                }
-            </td>
-            <td>
-                <span id="Checkbox-error" class="field-validation-error">
-                    <span>Select at least one day.</span>
-                </span>
-            </td>
+            @using (Html.BeginForm("SubmitNewUser", "Home", FormMethod.Post))
+            {
+                <table class="w3-table">
+                    <tr>
+                        <td>@Html.LabelFor(x => x.Name):</td>
+                        <td>@Html.TextBoxFor(x => x.Name, new { @class="w3-input"})</td> 
+                        <td>@Html.ValidationMessageFor(x => x.Name,"", new { @class = "text-danger" })</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(x => x.Email):</td>
+                        <td>@Html.TextBoxFor(x => x.Email, new { @class="w3-input"})</td>
+                        <td>@Html.ValidationMessageFor(x => x.Email,"", new { @class = "text-danger" })</td>
+
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(x => x.Gender):</td>
+                        <td>@Html.RadioButtonFor(x => x.Gender, "Male",new { @class = "w3-radio" }) Male @Html.RadioButtonFor(x => x.Gender, "Female",new { @class = "w3-radio" }) Female</td>
+                        <td>@Html.ValidationMessageFor(x => x.Gender,"", new { @class = "text-danger" })</td>
+
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(x => x.RegDate):</td>
+                        <td>@Html.EditorFor(x => x.RegDate, new { @type = "date", @Value = DateTime.Today.Date, htmlAttributes = new { @onchange = "checkDate()" ,@class = "w3-input"} })</td>
+                        <td>@Html.ValidationMessageFor(x => x.RegDate,"", new { @class = "text-danger" })</td>
+
+                    </tr>
 
 
-        </tr>
+                    <tr>
 
-        <tr>
-            <td>@Html.LabelFor(x => x.AddReq):</td>
-            <td>@Html.TextBoxFor(x => x.AddReq)</td>
-            <td>@Html.ValidationMessageFor(x => x.AddReq)</td>
-
-        </tr>
-
-
-        <tr>
-            <td colspan="2" align="right"><input id="submitBtn" type="submit" value="Submit" style="color:midnightblue" /></td>
-        </tr>
+                        <td>Select Days:</td>
+                        <td>
+                            @for (int i = 0; i < Model.boxes.Count; i++)
+                            {
+                                @Html.CheckBoxFor(m => Model.boxes[i].IsChecked, new { @class = "w3-check" })
+                                @Model.boxes[i].Text
+                                @Html.HiddenFor(m => Model.boxes[i].Text)
+                                @Html.HiddenFor(m => Model.boxes[i].Id)
 
 
-    </table>
-}
+
+
+
+                            }
+                        </td>
+                        <td>
+                            <span id="Checkbox-error" class="text-danger">
+                                <span>Select at least one day.</span>
+                            </span>
+                        </td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(x => x.AddReq):</td>
+                        <td>@Html.TextBoxFor(x => x.AddReq, new { @class="w3-input"})</td>
+                        <td>@Html.ValidationMessageFor(x => x.AddReq,"", new { @class = "text-danger" })</td>
+
+                    </tr>
+
+
+                    <tr>
+                        <td colspan="2" align="right"><input id="submitBtn" type="submit" value="Submit" class="w3-btn" /></td>
+                    </tr>
+
+
+                </table>
+            }
+
+
+        </div>
+    </div>
+</header>
+
 
 
 
@@ -118,7 +147,7 @@
 
             
 
-            if ($(".checkboxcls:checkbox:checked").length > 0) {
+            if ($(".w3-check:checkbox:checked").length > 0) {
                 declarationsError.hide();
                 return true;
             } else {
@@ -127,16 +156,18 @@
             }
         });
 
-        $('.checkboxcls').change(function () {
+        $('.w3-check').change(function () {
             
 
             if ($(this).is(':checked')) {
                 declarationsError.hide(); // hide error message
             }
 
-            if ($(".checkboxcls:checkbox:checked").length = 0) {
+            if ($(".w3-check:checkbox:checked").length = 0) {
                 declarationsError.show();
             }
         });
+
+        
     </script>
 }

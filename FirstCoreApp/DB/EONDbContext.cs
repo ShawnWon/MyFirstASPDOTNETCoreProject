@@ -17,7 +17,7 @@ namespace FirstCoreApp.DB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-MBSGJ0P; Database=EONtestCore;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=shawndbserver.database.windows.net;Initial Catalog=FirstCoreApp_db;User ID=shawnwon;Password=Onehundredyears@;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
