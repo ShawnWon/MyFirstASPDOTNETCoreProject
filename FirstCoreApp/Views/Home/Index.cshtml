@@ -5,25 +5,25 @@
     List<Users> userlist = ViewBag.listuser;
 }
 
-    <div class="w3-bar w3-white w3-large">
-    </div>
-
-<div class="w3-display-container w3-content" style="max-width:1500px;" >
-    <img class="w3-image" src="~/lib/Images/bg.jpg" style="min-width:1000px;">
-    <div class="w3-display-left w3-padding w3-col l6 m8">
+    
+<header class="w3-display-container w3-content" style="max-width:1920px;" >
+    <img class="w3-image" src="~/lib/Images/bg.jpg" style="min-width:1000px" width="1920" height="1080">
+    <div class="w3-display-topleft w3-padding w3-col">
         <div class="w3-container w3-blue">
-            <h4><i class="fa fa-bed w3-margin-right"></i>Registered User List</h4>
-            <input type="button" value="+ Add User" onclick="window.location.href='@Url.Action("AddUserForm","Home")'" class="w3-btn" />
+
+            <h4><i class="fa fa-star w3-margin-right"></i>Registered User List</h4>
+            <span class="float-right" ><input type="button" value="+ Add User" onclick="window.location.href='@Url.Action("AddUserForm","Home")'" class="w3-btn" /></span>
+
         </div>
         <div class="w3-container w3-white w3-padding-16">
-
-            <table class="w3-table w3-striped" overflow="auto">
-                <tr><th>No</th><th>Name</th><th>Email</th><th>Gender</th><th>Date Reg</th><th>Selected Days</th><th>Add Request</th></tr>
+            <div style="overflow-x:auto;">
+            <table class="w3-table w3-striped">
+                <tr><th>Name</th><th>Email</th><th>Gender</th><th>Date Reg</th><th>Selected Days</th><th>Add Request</th></tr>
 
                 @{ foreach (Users user in userlist)
                     {
                         <tr>
-                            <td>@user.ID</td>
+                           
                             <td>@user.Name</td>
                             <td>@user.Email</td>
                             <td>@user.Gender</td>
@@ -49,11 +49,11 @@
                 }
 
             </table>
-
+            </div>
 
         </div>
     </div>
-</div>
+</header>
 
 
 

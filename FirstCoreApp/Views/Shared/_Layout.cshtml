@@ -17,16 +17,16 @@
     </style>
 </head>
 <body class="w3-light-grey">
-
-    <div class="container-fluid body-content">
-        <div class="row" style="padding-top:10px;">
-        <main role="main" class="pb-3" >
-            @RenderBody()
-        </main>
-        </div>
+    <!-- Navigation Bar -->
+    <div class="w3-bar w3-white w3-large">
+        <a href="#" class="w3-bar-item w3-button w3-blue w3-mobile"><i class="fa fa-bandcamp w3-margin-right"></i>Shawn's Registration Page</a>
+        
     </div>
 
-    <footer class="border-top footer text-muted">
+    @RenderBody()
+
+
+    <footer class="border-bottom footer text-muted">
         <div class="container">
             &copy; 2020 - FirstCoreApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
@@ -41,17 +41,17 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
     <script>
         $.validator.methods.range = function (value, element, param) {
-            
-            
+
+
             var min = $(element).attr('data-val-range-min');
             var max = $(element).attr('data-val-range-max');
-            
+
             var date = new Date(value).getTime();
             var minDate = new Date(min).getTime();
             var maxDate = new Date(max).getTime();
-                return this.optional(element) || (date >= minDate && date <= maxDate);
-          };
-        </script>
+            return this.optional(element) || (date >= minDate && date <= maxDate);
+        };
+    </script>
 
 </body>
 </html>

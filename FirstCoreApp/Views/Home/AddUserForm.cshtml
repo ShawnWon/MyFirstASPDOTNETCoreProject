@@ -19,21 +19,20 @@
 </style>
   
 
-<div class="w3-bar w3-white w3-large">
-    </div>
 
-<div class="w3-display-container w3-content" style="max-width:1500px;" >
-    <img class="w3-image" src="~/lib/Images/bg.jpg" style="min-width:1000px"  >
-    <div class="w3-display-left w3-padding w3-col l6 m8">
+
+<header class="w3-display-container w3-content" style="max-width:1920px;" >
+    <img class="w3-image" src="~/lib/Images/bg.jpg" style="min-width:1000px" width="1920" height="1080" >
+    <div class="w3-display-topleft w3-padding w3-col l6 m8">
         <div class="w3-container w3-blue">
-            <h4><i class="fa fa-bed w3-margin-right"></i>AddUserForm</h4>
+            <h4><i class="fa fa-heart w3-margin-right"></i>AddUserForm</h4>
         </div>
         <div class="w3-container w3-white w3-padding-16">
 
 
             @using (Html.BeginForm("SubmitNewUser", "Home", FormMethod.Post))
             {
-
+            <br>
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-col col-md-3">
                     
@@ -46,7 +45,8 @@
                     @Html.ValidationMessageFor(x => x.Name,"", new { @class = "text-danger" })
                 </div>
             </div>
-
+            <br>
+            
 
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-col col-md-3">
@@ -59,7 +59,8 @@
                     @Html.ValidationMessageFor(x => x.Email,"", new { @class = "text-danger" })
                 </div>
             </div>
-
+            
+            <br>
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-col col-md-3">
 
@@ -71,7 +72,8 @@
                     @Html.ValidationMessageFor(x => x.Gender,"", new { @class = "text-danger" })
                 </div>
             </div>
-
+            
+            <br>
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-col col-md-3">
 
@@ -83,7 +85,8 @@
                     @Html.ValidationMessageFor(x => x.RegDate,"", new { @class = "text-danger" })
                 </div>
             </div>
-
+            <br>
+            
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-col col-md-3">
 
@@ -108,7 +111,8 @@
                     </span>
                 </div>
             </div>
-
+            
+            <br>
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-col col-md-3">
 
@@ -121,7 +125,8 @@
                     @Html.ValidationMessageFor(x => x.AddReq,"", new { @class = "text-danger" })
                 </div>
             </div>
-
+            
+            <br>
             <div class="w3-row-padding" style="margin:0 -16px;">
                 <div class="w3-col col-md-3 w3-center">
 
@@ -138,7 +143,7 @@
 
         </div>
     </div>
-</div>
+</header>
 
 
 
